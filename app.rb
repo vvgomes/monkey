@@ -24,6 +24,9 @@ end
 
 post '/' do
   raw = params['payload']
+  puts "@@@ STATUS: #{raw['status_message']}"
+  puts "@@@ COMMIT: #{raw['commit']}"
+  puts "@@@ BRANCH: #{raw['branch']}"
   Payload.create(
     :status_message => raw['status_message'], 
     :commit => raw['commit'],
