@@ -7,6 +7,6 @@ get '/' do
 end
 
 post '/' do
-  @data = params
-  erb :index
+  puts ">>>>>>>>>> THE PARAMS: #{params}"
+  'done'
 end
