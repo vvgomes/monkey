@@ -19,16 +19,11 @@ Mongoid.configure do |config|
 end
 
 get '/' do
-  erb :index
+  erb :index, :locals => { :last => Payload.last }
 end
 
 post '/' do
-  puts ">>> OK, got there"
   raw = params['payload']
-  puts ">>> CLASS: #{raw.class}"
-  puts ">>> STATUS: #{raw['status_message']}"
-  puts ">>> COMMIT: #{raw['commit']}"
-  puts ">>> BRANCH: #{raw['branch']}"
   Payload.create(
     :status_message => raw['status_message'], 
     :commit => raw['commit'],
