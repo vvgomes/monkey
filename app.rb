@@ -19,7 +19,7 @@ post '/' do
     :commit => raw['commit'],
     :branch => raw['branch']
   }
-  deploy @@last[:status] == 'Passed'
+  deploy if @@last[:status] == 'Passed'
 end
 
 def deploy
