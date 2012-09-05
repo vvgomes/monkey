@@ -23,10 +23,12 @@ get '/' do
 end
 
 post '/' do
+  puts ">>> OK, got there"
   raw = params['payload']
-  puts "@@@ STATUS: #{raw['status_message']}"
-  puts "@@@ COMMIT: #{raw['commit']}"
-  puts "@@@ BRANCH: #{raw['branch']}"
+  puts ">>> CLASS: #{raw.class}"
+  puts ">>> STATUS: #{raw['status_message']}"
+  puts ">>> COMMIT: #{raw['commit']}"
+  puts ">>> BRANCH: #{raw['branch']}"
   Payload.create(
     :status_message => raw['status_message'], 
     :commit => raw['commit'],
