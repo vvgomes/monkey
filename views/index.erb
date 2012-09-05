@@ -7,11 +7,8 @@
 <body>
   <h1>last one I got</h1>
   <ul>
-    <li>status message: <%= last.status_message %></li>
-    <li>commit: <%= last.commit %></li>
-    <li>branch: <%= last.branch %></li>
-    <li>count: <%= Payload.count %></li>
-    <li>class: <%= raw.class %></li>
-    <li>raw: <%= raw %></li>
+    <li>status message: <%= @@last[:status] %></li>
+    <li>commit: <%= @@last[:commit] %></li>
+    <li>branch: <%= @@last[:branch] %></li>
   </ul>
 </body>
