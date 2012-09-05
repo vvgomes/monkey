@@ -23,13 +23,15 @@ post '/' do
 end
 
 def deploy
+  clone = "git clone --depth=100 --quiet git://github.com/vvgomes/victorykit.git"
+  cd = 'cd victorykit'
+  pull = 'git pull'
+  checkout = "git checkout -qf #{@@last[:commit]}"
+  add_remote = 'git remote add testserver git@heroku.com:still-retreat-5611.git'
+  push = "git push testserver #{@@last[:branch]}"
   begin
-    `git clone --depth=100 --quiet git://github.com/vvgomes/victorykit.git` if Dir['victorykit'].empty?
-    `cd victorykit`
-    `git pull`
-    `git checkout -qf #{@@last[:commit]}`
-    `git remote add testserver git@heroku.com:still-retreat-5611.git`
-    `git push testserver #{@@last[:branch]}`
+    `#{clone}` if Dir['victorykit'].empty?
+    `#{cd} && #{pull} && #{checkout} && #{add_remote} && #{push}`
   rescue => e
     puts "Bad news: #{e}"
     return 1
