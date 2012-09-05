@@ -23,7 +23,7 @@ get '/' do
 end
 
 post '/' do
-  raw = params['payload']
+  raw = JSON.parse(params[:payload])
   Payload.create(
     :status_message => raw['status_message'], 
     :commit => raw['commit'],
