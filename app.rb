@@ -28,6 +28,7 @@ post '/' do
     :status_message => raw['status_message'], 
     :commit => raw['commit'],
     :branch => raw['branch'])
+  @@raw = raw
   'done'
 end
 
