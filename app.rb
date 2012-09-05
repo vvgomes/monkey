@@ -19,7 +19,7 @@ Mongoid.configure do |config|
 end
 
 get '/' do
-  erb :index, :locals => { :last => Payload.last }
+  erb :index, :locals => { :last => Payload.last, :raw => @@raw }
 end
 
 post '/' do
